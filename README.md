@@ -11,10 +11,11 @@ Interactions between proteins and ions are essential for the proteins to carry o
 - [Pandas](https://pandas.pydata.org/)
 
 ## Set up
-The input for this tool consists of raw protein sequences in fasta format. While the output consists of probability scores for each candidate site. The threshold used is 0.5. So candidate residues that have a probability >= 0.5 are considered to be ion-binding sites. 
-Data sets used to be used to run prediction must be placed in the directory called `test` while the results for each residue binding site would be found in the directory
-`results`. It would be saved in a directory labeled with the corresponding ion name.
-A batch size of 128 was used while running predictions but this parameter can be modified.
+The input for this tool consists of raw protein sequences in fasta format. While the output consists of probability scores for each candidate site. 
+- The threshold used is 0.5. So candidate residues that have a probability >= 0.5 are considered to be ion-binding sites. 
+- Data sets used to be used to run prediction must be placed in the directory called `test` 
+- While the results for each residue binding site would be found in the directory`results`. It would be saved in a directory labeled with the corresponding ion name.
+- A batch size of 128 was used while running predictions but this parameter can be modified.
 
 ## Run Prediction
 For example to predict Calcium binding site i.e. Ca<sup>2+</sup>, run the command:
