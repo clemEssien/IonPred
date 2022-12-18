@@ -1,0 +1,1 @@
+CA: AUC: 0.58 - Average Precision: 0.31 - correct: 8383.00 - precision: 18.18 - recall: 18.18 - f1: 18.18 - sensitivity: 89.45 - accuracy: 22.84 - specificity: 7.55 - mcc: -4.29 - loss: 0.82

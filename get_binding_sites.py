@@ -12,7 +12,7 @@ from tqdm import tqdm
 wrapper = textwrap.TextWrapper(width=60)
 
 pbe = pdb_entries.Pdb_Entries()
-BINDING_SITES = "Data/binding_sites/"
+BINDING_SITES = "data/binding_sites/"
 ligands = defaultdict(list)
 seq_dict = pbe.chains_with_sequences()
 

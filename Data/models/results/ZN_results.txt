@@ -1,0 +1,1 @@
+ZN: AUC: 0.51 - Average Precision: 0.54 - correct: 220.00 - precision: 78.01 - recall: 78.01 - f1: 78.01 - sensitivity: 3.67 - accuracy: 50.27 - specificity: 98.92 - mcc: 8.46 - loss: 0.92
