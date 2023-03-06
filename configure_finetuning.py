@@ -143,7 +143,7 @@ class FinetuningConfig(object):
       elif task_name == "chunk":
         self.max_seq_length = 256
       else:
-        self.num_train_epochs = 50
+        self.num_train_epochs = 38.0
 
     # default hyperparameters for different model sizes
     if self.model_size == "large":

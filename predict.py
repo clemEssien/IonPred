@@ -20,8 +20,8 @@ def main():
                         \'radical\' for predicting radicals.\n \
                         \'halide\' for predicting halides. \n \
                         It indicates two files [-model-prefix]_HDF5model and [-model-prefix]_parameters.', required=False)
-    parser.add_argument('-ion', dest='ion', type=str, help='indicates the specific metal ion you want to predict e.g. \'CA\' or \'MG\' or \'F\' or \'SO4\' etc.', required=False,default=None)
-    parser.add_argument('-residue-types', dest='residues', type=str, help='Residue types that to be predicted, only used when -predict-type is \'general\'. For multiple residues, seperate each with \',\'',required=False,default="S,T")
+    parser.add_argument('-ion', dest='ion', type=str, help='indicates the specific ion you want to predict e.g. \'CA\' or \'MG\' or \'F\' or \'SO4\' etc.', required=True,default=None)
+    parser.add_argument('-residue-types', dest='residues', type=str, help='Residue types that to be predicted, only used when -predict-type is \'general\'. For multiple residues, seperate each with \',\'',required=False,default="C,H,E,D")
     
     args = parser.parse_args()
 
@@ -42,6 +42,7 @@ def main():
     if ion is None or ion not in ion_list:
             print("wrong parameter for -predict_type \n Must be one of the following: "+','.join(ion_list)+ "\n")
             exit()
+            
     if predicttype == 'metal':
         residues = "C,H,E,D"
     elif predicttype == 'radical':
@@ -59,15 +60,15 @@ def main():
     testset=np.column_stack((testlabel, testfrag, ids, poses, focuses))
     testset=pd.DataFrame(testset)
     testset.to_csv(test_path + ion+"/dev.tsv", index=False, header=None, sep='\t')
-    task_name = [ion]
+    
     os.system('python3 run_finetuning.py \
     --data-dir data \
-    --model-name phosphorylation \
+    --model-name ionpred/'+predicttype+ ' \
     --hparams \'{"model_size": "small", "do_train": false,"do_eval": true,"task_names": ["' + ion + '"]}\'' 
     )
         
-    os.system('rm -rf ' + test_path + ion+'/*')
-    os.system('rm -rf data/models/protein_small_quater_1m/finetuning_tfrecords/*')
+    # os.system('rm -rf ' + test_path + ion+'/*')
+    # os.system('rm -rf data/models/protein_small_quater_1m/finetuning_tfrecords/*')
     
 print("Predictions completed successfully!\n")
     

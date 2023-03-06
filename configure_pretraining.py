@@ -41,12 +41,12 @@ class PretrainingConfig(object):
     self.learning_rate = 1e-4
     self.lr_decay_power = 1.0  # linear weight decay by default
     self.weight_decay_rate = 0.01
-    self.num_warmup_steps = 20000
+    self.num_warmup_steps = 16000
 
     # training settings
     self.iterations_per_loop = 200
     self.save_checkpoints_steps = 1000
-    self.num_train_steps = 1000000
+    self.num_train_steps = 200000
     self.num_eval_steps = 100
     self.keep_checkpoint_max = 5 # maximum number of recent checkpoint files to keep;
                                  # change to 0 or None to keep all checkpoints
