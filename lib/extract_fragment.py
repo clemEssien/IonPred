@@ -120,7 +120,7 @@ def extractFragforTraining(fasta_file,windows=16,empty_aa="-",focus=("C","D","E"
     frag = get_frag(fasta_dict,positive_dict,idlist, windows, empty_aa,focus)[0]
     return frag
 
-def extractFragforPredict(fasta_file,windows=16,empty_aa="-",focus=("C","D","E","G","H","K","N","R","S")):
+def extractFragforPredict(fasta_file,windows=16,empty_aa="-",focus=("C","D","E","H")):
     
     
     

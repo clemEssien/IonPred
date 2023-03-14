@@ -1,1 +1,0 @@
-F: AUC: 0.52 - Average Precision: 0.32 - correct: 0.00 - precision: 0.00 - recall: 0.00 - f1: 0.00 - loss: 0.50

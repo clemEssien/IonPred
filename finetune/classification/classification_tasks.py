@@ -340,7 +340,7 @@ class FE2(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class FE3(ClassificationTask):
@@ -357,7 +357,7 @@ class FE3(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class ZN(ClassificationTask):
@@ -374,7 +374,7 @@ class ZN(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CA(ClassificationTask):
@@ -391,7 +391,7 @@ class CA(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class MG(ClassificationTask):
@@ -408,7 +408,7 @@ class MG(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class MN(ClassificationTask):
@@ -425,7 +425,7 @@ class MN(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CU(ClassificationTask):
@@ -442,7 +442,7 @@ class CU(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CO(ClassificationTask):
@@ -459,7 +459,7 @@ class CO(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class K(ClassificationTask):
@@ -476,7 +476,7 @@ class K(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class NA(ClassificationTask):
@@ -493,7 +493,7 @@ class NA(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CD(ClassificationTask):
@@ -510,7 +510,7 @@ class CD(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class NI(ClassificationTask):
@@ -527,7 +527,7 @@ class NI(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class PO4(ClassificationTask):
@@ -544,7 +544,7 @@ class PO4(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class NO3(ClassificationTask):
@@ -561,7 +561,7 @@ class NO3(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CO3(ClassificationTask):
@@ -578,7 +578,7 @@ class CO3(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CO2(ClassificationTask):
@@ -595,7 +595,7 @@ class CO2(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class SO4(ClassificationTask):
@@ -612,7 +612,7 @@ class SO4(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class I(ClassificationTask):
@@ -629,7 +629,7 @@ class I(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class CL(ClassificationTask):
@@ -646,7 +646,7 @@ class CL(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class BR(ClassificationTask):
@@ -663,7 +663,7 @@ class BR(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
 class F(ClassificationTask):
@@ -680,4 +680,4 @@ class F(ClassificationTask):
         return examples
 
     def get_scorer(self, task, split):
-        return classification_metrics.AUCScorer(task, split)
+        return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)

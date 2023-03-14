@@ -33,17 +33,15 @@ def main():
     test_path='data/finetuning_data/'
     window=12
     
-    for ion in ion_list:
-        t_path = test_path + ion+'/'
-        is_exist = os.path.exists(t_path)
-        if not is_exist:
-            os.makedirs(t_path)
+    for i in ion_list:
+        t_path = test_path + i+'/'
+        os.makedirs(t_path, exist_ok=True)
     
     if ion is None or ion not in ion_list:
             print("wrong parameter for -predict_type \n Must be one of the following: "+','.join(ion_list)+ "\n")
             exit()
             
-    if predicttype == 'metal':
+    '''if predicttype == 'metal':
         residues = "C,H,E,D"
     elif predicttype == 'radical':
         residues = "G,H,K,R,S"
@@ -51,9 +49,9 @@ def main():
         residues = "G,K,N,R"
     else:
         print("wrong parameter for -predict-type!\n")
-        exit()
+        exit()'''
         
-    print("running ", predicttype," prediction \n")        
+    
     testfrag,ids,poses,focuses=extractFragforPredict(inputfile,window,'-',focus=residues) 
     testlabel = testfrag[0]
     testfrag = testfrag[range(1,26)].apply(' '.join, axis = 1)
@@ -61,10 +59,16 @@ def main():
     testset=pd.DataFrame(testset)
     testset.to_csv(test_path + ion+"/dev.tsv", index=False, header=None, sep='\t')
     
+    #dev_set = np.column_stack((testlabel, testfrag))
+    #dev_set = pd.DataFrame(dev_set)
+    #testset.to_csv(test_path + ion+"/dev.tsv", index=False, header=None, sep='\t')
+    
+    
+    
     os.system('python3 run_finetuning.py \
     --data-dir data \
-    --model-name ionpred/'+predicttype+ ' \
-    --hparams \'{"model_size": "small", "do_train": false,"do_eval": true,"task_names": ["' + ion + '"]}\'' 
+    --model-name ionpred  \
+    --hparams \'{"model_size": "small", "do_train": true,"do_eval": true,"task_names": ["' + ion + '"]}\'' 
     )
         
     # os.system('rm -rf ' + test_path + ion+'/*')

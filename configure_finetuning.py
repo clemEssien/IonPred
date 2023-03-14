@@ -33,7 +33,7 @@ class FinetuningConfig(object):
     self.debug = False  # debug mode for quickly running things
     self.log_examples = False  # print out some train examples for debugging
     self.num_trials = 1  # how many train+eval runs to perform
-    self.do_train = False  # train a model
+    self.do_train = True  # train a model
     self.do_eval = True  # evaluate the model
     self.keep_all_models = True  # if False, only keep the last trial's ckpt
 
@@ -56,9 +56,9 @@ class FinetuningConfig(object):
     self.layerwise_lr_decay = 0.8  # if > 0, the learning rate for a layer is
                                    # lr * lr_decay^(depth - max_depth) i.e.,
                                    # shallower layers have lower learning rates
-    self.num_train_epochs = 1000.0  # passes over the dataset during training
+    self.num_train_epochs = 10  # passes over the dataset during training
     self.warmup_proportion = 0.1  # how much of training to warm up the LR for
-    self.save_checkpoints_steps = 10000
+    self.save_checkpoints_steps = 1000
     self.iterations_per_loop = 1000
     self.use_tfrecords_if_existing = True  # don't make tfrecords and write them
                                            # to disc if existing ones are found
@@ -70,9 +70,9 @@ class FinetuningConfig(object):
 
     # sizing
     self.max_seq_length = 27
-    self.train_batch_size = 128
-    self.eval_batch_size = 128
-    self.predict_batch_size = 128
+    self.train_batch_size = 32
+    self.eval_batch_size = 32
+    self.predict_batch_size = 32
     self.double_unordered = True  # for tasks like paraphrase where sentence
                                   # order doesn't matter, train the model on
                                   # on both sentence orderings for each example
@@ -143,7 +143,7 @@ class FinetuningConfig(object):
       elif task_name == "chunk":
         self.max_seq_length = 256
       else:
-        self.num_train_epochs = 38.0
+        self.num_train_epochs = 10
 
     # default hyperparameters for different model sizes
     if self.model_size == "large":

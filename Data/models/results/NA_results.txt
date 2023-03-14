@@ -1,1 +1,0 @@
-NA: AUC: 0.64 - Average Precision: 0.24 - correct: 143.00 - precision: 71.86 - recall: 71.86 - f1: 71.86 - sensitivity: 8.04 - accuracy: 84.44 - specificity: 99.38 - mcc: 20.48 - loss: 0.47

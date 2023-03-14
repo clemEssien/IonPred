@@ -43,7 +43,7 @@ class FinetuningModel(object):
     bert_config = training_utils.get_bert_config(config)
     self.bert_config = bert_config
     if config.debug:
-      bert_config.num_hidden_layers = 3
+      bert_config.num_hidden_layers = 12
       bert_config.hidden_size = 144
       bert_config.intermediate_size = 144 * 4
       bert_config.num_attention_heads = 4
@@ -86,6 +86,7 @@ def model_fn_builder(config: configure_finetuning.FinetuningConfig, tasks,
 
     # Load pre-trained weights from checkpoint
     init_checkpoint = config.init_checkpoint
+    
     if pretraining_config is not None:
       init_checkpoint = tf.train.latest_checkpoint(pretraining_config.model_dir)
       utils.log("Using checkpoint", init_checkpoint)

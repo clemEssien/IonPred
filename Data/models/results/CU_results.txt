@@ -1,1 +1,0 @@
-CU: AUC: 0.39 - Average Precision: 0.38 - correct: 2690.00 - precision: 43.30 - recall: 43.30 - f1: 43.30 - sensitivity: 100.00 - accuracy: 43.30 - specificity: 0.00 - mcc: 0.00 - loss: 1.40

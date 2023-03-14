@@ -38,15 +38,15 @@ class PretrainingConfig(object):
     self.mask_prob = 0.15  # percent of input tokens to mask out / replace
 
     # optimization
-    self.learning_rate = 1e-4
+    self.learning_rate = 5e-4
     self.lr_decay_power = 1.0  # linear weight decay by default
     self.weight_decay_rate = 0.01
-    self.num_warmup_steps = 16000
+    self.num_warmup_steps = 10000
 
     # training settings
     self.iterations_per_loop = 200
     self.save_checkpoints_steps = 1000
-    self.num_train_steps = 200000
+    self.num_train_steps = 10000
     self.num_eval_steps = 100
     self.keep_checkpoint_max = 5 # maximum number of recent checkpoint files to keep;
                                  # change to 0 or None to keep all checkpoints
@@ -69,7 +69,7 @@ class PretrainingConfig(object):
                                               # token embeddings?
     self.untied_generator = True  # tie all generator/discriminator weights?
     self.generator_layers = 1.0  # frac of discriminator layers for generator
-    self.generator_hidden_size = 0.5  # frac of discrim hidden size for gen
+    self.generator_hidden_size = 0.25  # frac of discrim hidden size for gen
     self.disallow_correct = False  # force the generator to sample incorrect
                                    # tokens (so 15% of tokens are always
                                    # fake)
@@ -77,8 +77,8 @@ class PretrainingConfig(object):
 
     # batch sizes
     self.max_seq_length = 27
-    self.train_batch_size = 1024
-    self.eval_batch_size = 1024
+    self.train_batch_size = 128
+    self.eval_batch_size = 128
 
     # TPU settings
     self.use_tpu = False

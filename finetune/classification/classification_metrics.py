@@ -29,6 +29,7 @@ from sklearn.metrics import roc_curve, auc, precision_score, precision_recall_cu
 from finetune import scorer
 import pandas as pd
 import csv
+import os
 
 
 class SentenceLevelScorer(scorer.Scorer):
@@ -81,6 +82,7 @@ class AccuracyScorer(SentenceLevelScorer):
 class AUCScorer(SentenceLevelScorer):
 
   def _get_results(self):  
+    print(len(self._true_labels), len(self._positive_probability))
     fpr, tpr, thersholds = roc_curve(self._true_labels, self._positive_probability)
     roc_auc = auc(fpr, tpr)
     
@@ -103,9 +105,12 @@ class AUCScorer(SentenceLevelScorer):
       r = 100.0 * n_correct / n_gold
       f1 = 2 * p * r / (p + r)
     
+    
     results=np.column_stack((self._lines, self._positive_probability))
     result=pd.DataFrame(results)
-    result.to_csv(r'results/' + self._name + '_test_results.txt', index=False, header=None, sep='\t',quoting=csv.QUOTE_NONNUMERIC)
+    result_path = 'results/'
+    os.makedirs(result_path ,exist_ok=True)
+    result.to_csv(result_path +self._name+ '_test_results.txt', index=False, header=None, sep='\t',quoting=csv.QUOTE_NONNUMERIC)
     print('Writing results to results/' + self._name + '_test_results.txt\n')  
     return [
         ('AUC', roc_auc),

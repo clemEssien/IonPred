@@ -1,1 +1,0 @@
-MN: AUC: 0.61 - Average Precision: 0.15 - correct: 0.00 - precision: 0.00 - recall: 0.00 - f1: 0.00 - sensitivity: 0.00 - accuracy: 87.34 - specificity: 100.00 - mcc: 0.00 - loss: 0.43
