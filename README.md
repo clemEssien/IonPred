@@ -18,7 +18,7 @@ The input for this tool consists of raw protein sequences in fasta format. While
 - A batch size of 128 was used while running predictions but this parameter can be modified.
 
 ## Run Prediction
-For example to predict Calcium binding site i.e. Ca<sup>2+</sup>, run the command:
+For example to predict Zinc binding site i.e. Zn<sup>2+</sup>, run the command:
 
 `python3 predict.py -input test/zn.fasta -ion-type ZN`
 
