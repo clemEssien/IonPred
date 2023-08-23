@@ -20,4 +20,6 @@ lib/__pycache__/
 finetune/__pycache__/
 pretrain/__pycache__/
 test.fasta
-results/*.txt
+results/CU_test_results.txt
+results/MN_test_results.txt
+results/FE3_test_results.txt
