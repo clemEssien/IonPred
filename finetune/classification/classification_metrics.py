@@ -24,8 +24,7 @@ import numpy as np
 import scipy
 import sklearn
 import math
-from sklearn.metrics import roc_curve, auc, precision_score, precision_recall_curve, average_precision_score
-
+from sklearn.metrics import roc_curve, auc, precision_score, precision_recall_curve, average_precision_score, confusion_matrix, matthews_corrcoef
 from finetune import scorer
 import pandas as pd
 import csv
@@ -105,14 +104,29 @@ class AUCScorer(SentenceLevelScorer):
       r = 100.0 * n_correct / n_gold
       f1 = 2 * p * r / (p + r)
     
-    
+    y_pred = [x>0.5 for x in self._positive_probability]
+    conf_matrix = confusion_matrix(self._true_labels, y_pred)
+    TP = conf_matrix[1][1]
+    TN = conf_matrix[0][0]
+    FP = conf_matrix[0][1]
+    FN = conf_matrix[1][0]
+    conf_accuracy = (float (TP+TN) / float(TP + TN + FP + FN))
+    conf_sensitivity = (TP / float(TP + FN))
+    conf_specificity = (TN / float(TN + FP))
+    conf_precision = (TN / float(TN + FP))
+    mcc = matthews_corrcoef(self._true_labels, y_pred)
     results=np.column_stack((self._lines, self._positive_probability))
     result=pd.DataFrame(results)
     result_path = 'results/'
     os.makedirs(result_path ,exist_ok=True)
     result.to_csv(result_path +self._name+ '_test_results.txt', index=False, header=None, sep='\t',quoting=csv.QUOTE_NONNUMERIC)
-    print('Writing results to results/' + self._name + '_test_results.txt\n')  
+    print('Writing results to results/' + self._name + '_test_results.txt\n') 
     return [
+        ('Specificity', conf_specificity),
+        ('Sensitivity', conf_sensitivity ),
+        ('Accuracy', conf_accuracy),
+        ('Precision', conf_precision),
+        ('MCC', mcc),
         ('AUC', roc_auc),
         ('AUPR', average_precision),
         ('Precision', p),

@@ -7,10 +7,8 @@ import csv
 from lib.extract_fragment import extractFragforPredict
 
 def main():
-    metals = ["ZN","CU","FE2","FE3","CA","MG","MN","NA","K"]
-    radicals = ["CO3","NO2","PO4", "SO4"]
-    halides = ["B","F","I","CL"]
-    ion_list = ["ZN","CU","FE2","FE3","CA","MG","MN","NA","K","CO3","NO2","PO4", "SO4","B","F","I","CL"]
+
+    ion_list = ["ZN","CU","FE2","FE3","CA","MG","MN","NA","K","CO3","NO2","PO4", "SO4"]
     parser=argparse.ArgumentParser(description='Prediction of ion-ligand binding sites using ELECTRA.')
     parser.add_argument('-input', dest='inputfile', type=str, help='Protein sequences to be predicted in fasta format.', required=True)
     parser.add_argument('-predict-type',  
@@ -41,16 +39,7 @@ def main():
             print("wrong parameter for -predict_type \n Must be one of the following: "+','.join(ion_list)+ "\n")
             exit()
             
-    '''if predicttype == 'metal':
-        residues = "C,H,E,D"
-    elif predicttype == 'radical':
-        residues = "G,H,K,R,S"
-    elif predicttype == 'halide':
-        residues = "G,K,N,R"
-    else:
-        print("wrong parameter for -predict-type!\n")
-        exit()'''
-        
+
     
     testfrag,ids,poses,focuses=extractFragforPredict(inputfile,window,'-',focus=residues) 
     testlabel = testfrag[0]
@@ -68,11 +57,11 @@ def main():
     os.system('python3 run_finetuning.py \
     --data-dir data \
     --model-name ionpred  \
-    --hparams \'{"model_size": "small", "do_train": true,"do_eval": true,"task_names": ["' + ion + '"]}\'' 
+    --hparams \'{"model_size": "small", "do_train": false,"do_eval": true,"task_names": ["' + ion + '"]}\'' 
     )
         
-    # os.system('rm -rf ' + test_path + ion+'/*')
-    # os.system('rm -rf data/models/protein_small_quater_1m/finetuning_tfrecords/*')
+   
+    os.system('rm -rf data/models/ionpred/finetuning_tfrecords/'+ion+'_tfrecords')
     
 print("Predictions completed successfully!\n")
     

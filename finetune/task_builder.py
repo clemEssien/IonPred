@@ -83,7 +83,7 @@ def get_task(config: configure_finetuning.FinetuningConfig, task_name,
   elif task_name == "PO4":
     return classification_tasks.PO4(config, tokenizer)
   elif task_name == "NO2":
-    return classification_tasks.NO3(config, tokenizer)
+    return classification_tasks.NO2(config, tokenizer)
   elif task_name == "CO3":
     return classification_tasks.CO3(config, tokenizer)
   else:

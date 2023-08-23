@@ -547,11 +547,11 @@ class PO4(ClassificationTask):
         return classification_metrics.AUCScorer(task, pd.read_csv(os.path.join(self.config.raw_data_dir(self.name), split + ".tsv"), sep='\t', header=None), split)
 
 
-class NO3(ClassificationTask):
-    """NO3."""
+class NO2(ClassificationTask):
+    """NO2."""
 
     def __init__(self, config: configure_finetuning.FinetuningConfig, tokenizer):
-        super(NO3, self).__init__(config, "NO3", tokenizer, ["0", "1"])
+        super(NO2, self).__init__(config, "NO2", tokenizer, ["0", "1"])
 
     def _create_examples(self, lines, split):
         examples = []
