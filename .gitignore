@@ -1,0 +1,5 @@
+test.ipynb
+.env
+*.txt
+*.pyc
+/lib/__pycache__

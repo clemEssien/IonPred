@@ -46,7 +46,7 @@ class PretrainingConfig(object):
     # training settings
     self.iterations_per_loop = 200
     self.save_checkpoints_steps = 1000
-    self.num_train_steps = 200000
+    self.num_train_steps = 1000000
     self.num_eval_steps = 100
     self.keep_checkpoint_max = 5 # maximum number of recent checkpoint files to keep;
                                  # change to 0 or None to keep all checkpoints
@@ -114,21 +114,7 @@ class PretrainingConfig(object):
     # defaults for different-sized model
     if self.model_size == "small":
       self.embedding_size = 128
-    # Here are the hyperparameters we used for larger models; see Table 6 in the
-    # paper for the full hyperparameters
-    # else:
-    #   self.max_seq_length = 512
-    #   self.learning_rate = 2e-4
-    #   if self.model_size == "base":
-    #     self.embedding_size = 768
-    #     self.generator_hidden_size = 0.33333
-    #     self.train_batch_size = 256
-    #   else:
-    #     self.embedding_size = 1024
-    #     self.mask_prob = 0.25
-    #     self.train_batch_size = 2048
 
-    # passed-in-arguments override (for example) debug-mode defaults
     self.update(kwargs)
 
   def update(self, kwargs):
